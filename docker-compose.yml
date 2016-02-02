@@ -1,0 +1,14 @@
+tomcat:
+  container_name: ${SERVICE_NAME}
+  restart: always
+  image: tomcat:8.0
+  net: ${DOCKER_NETWORK_NAME}
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  privileged: true
+  expose:
+    - "8080"
+  labels:
+    - "PROJECT_NAME=${PROJECT_NAME}"
+    - "ENVIRONMENT_NAME=${ENVIRONMENT_NAME}"
+    - "ENVIRONMENT_TYPE=tomcat"
